@@ -19,7 +19,12 @@ namespace StoreApp1
             Console.WriteLine();
             foreach (Product p in prod)
             {
-                Console.WriteLine(p);
+                Console.WriteLine($"ID товара: {p.ID}", p.ID);
+                Console.WriteLine($"Название товара: {p.Name}", p.Name);
+                Console.WriteLine($"Описание товара: {p.Description}", p.Description);
+                Console.WriteLine($"Производитель товара: {p.Maker}", p.Maker);
+                Console.WriteLine($"Доступность товара: {p.Availaible}", p.Availaible);
+                Console.WriteLine($"Кол-во товара: {p.Count}", p.Count);
             }
         }
 
