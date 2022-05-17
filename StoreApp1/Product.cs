@@ -4,7 +4,7 @@ using System.Text;
 
 namespace StoreApp1
 {
-    class Product
+    public class Product
     {
         public int ID { get; set; }
         public string Name { get; set; }
@@ -17,7 +17,7 @@ namespace StoreApp1
 
     }
 
-    class Payment : Product
+    public class Payment : Product
     {
         public int delivery { get; set; }
         public double pay { get; set; }
