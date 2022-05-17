@@ -13,7 +13,7 @@ namespace StoreApp1
 
         static void Main(string[] args)
         {
-
+            Console.WriteLine("Добро пожаловать в магазин игрушек!");
             Console.WriteLine("Выберите команду:");
             Console.WriteLine("1 - Показать товары");
             Console.WriteLine("2 - Выйти");
@@ -41,10 +41,11 @@ namespace StoreApp1
                     }
                     goto case "2";
                 case "2":
+                    Console.WriteLine("Добро пожаловать в магазин игрушек!");
                     Console.WriteLine("Выберите команду:");
-                    Console.WriteLine("3- Найти товар по названию и описанию");
-                    Console.WriteLine("4- Сортировка товара по возрастанию цены и фильтрация производителя");
-                    Console.WriteLine("5- Сортировка товара по убыванию цены и фильтрация производителя");
+                    Console.WriteLine("3 - Найти товар по названию и описанию");
+                    Console.WriteLine("4 - Сортировка товара по возрастанию цены и фильтрация производителя");
+                    Console.WriteLine("5 - Сортировка товара по убыванию цены и фильтрация производителя");
                     string str1 = Console.ReadLine();
                     if (str1 == "3")
                     {
@@ -56,7 +57,7 @@ namespace StoreApp1
                     }
                     else if (str1 == "5")
                     {
-                      //  goto case "5";
+                       goto case "5";
                     }
                     else
                     {
@@ -91,19 +92,27 @@ namespace StoreApp1
                         Product product = prod.Find(x => x.Name.Contains("Детская смесь"));
                         Console.WriteLine("Название:{0}, Описание:{1}", product.Name, product.Description);
                     }
-                    goto case "2";
+                    else
+                    {
+                        Console.WriteLine("Ошибка");
+                    }
+                    goto case "6";
                 case "4":
                     Console.WriteLine("Введите Сортировка или Фильтрация:");
                     string str3 = Console.ReadLine();
                     if (str3 == "Сортировка")
                     {
                         var sortedPrice = from p in prod
-                                          orderby p.Price
+                                          orderby p.Price ascending
                                           select p;
                         foreach (var p in sortedPrice)
                             Console.WriteLine($"Название - {p.Name}, Описание - {p.Description}, Доступность - {p.Availaible}, Цена - {p.Price}");
                     }
-                    else if (str3 == "Фильтрация")
+                    else
+                    {
+                        Console.WriteLine("Ошибка");
+                    }
+                    if (str3 == "Фильтрация")
                     {
                         Console.WriteLine("Введите производителя:");
                         string str4 = Console.ReadLine();
@@ -125,13 +134,248 @@ namespace StoreApp1
                             foreach (Product p in selectedMaker)
                                 Console.WriteLine($"Название - {p.Name}, Описание - {p.Description}, Доступность - {p.Availaible}, Цена - {p.Price}");
                         }
+                        else if (str4 == "LINDA")
+                        {
+                            var selectedMaker = from p in prod
+                                                where p.Maker == "LINDA"
+                                                select p;
+
+                            foreach (Product p in selectedMaker)
+                                Console.WriteLine($"Название - {p.Name}, Описание - {p.Description}, Доступность - {p.Availaible}, Цена - {p.Price}");
+                        }
+                        else if (str4 == "Olobaby")
+                        {
+                            var selectedMaker = from p in prod
+                                                where p.Maker == "Olobaby"
+                                                select p;
+
+                            foreach (Product p in selectedMaker)
+                                Console.WriteLine($"Название - {p.Name}, Описание - {p.Description}, Доступность - {p.Availaible}, Цена - {p.Price}");
+                        }
+                        else if (str4 == "Nestle")
+                        {
+                            var selectedMaker = from p in prod
+                                                where p.Maker == "Nestle"
+                                                select p;
+
+                            foreach (Product p in selectedMaker)
+                                Console.WriteLine($"Название - {p.Name}, Описание - {p.Description}, Доступность - {p.Availaible}, Цена - {p.Price}");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Ошибка");
+                        }
                     }
 
                     goto case "2";
 
+                case "5":
+                    Console.WriteLine("Введите Сортировка или Фильтрация:");
+                    string str_ = Console.ReadLine();
+                    if (str_ == "Сортировка")
+                    {
+                        var sortedPrice = from p in prod
+                                          orderby p.Price descending
+                                          select p;
+                        foreach (var p in sortedPrice)
+                            Console.WriteLine($"Название - {p.Name}, Описание - {p.Description}, Доступность - {p.Availaible}, Цена - {p.Price}");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Ошибка");
+                    }
+                    if (str_ == "Фильтрация")
+                    {
+                        Console.WriteLine("Введите производителя:");
+                        string str_1 = Console.ReadLine();
+                        if (str_1 == "Helen Harper")
+                        {
+                            var selectedMaker = from p in prod
+                                                where p.Maker == "Helen Harper"
+                                                select p;
 
-                    //case "4":
-                    //  Operations.prod.Sort(delegate (Product prod1, Product prod2) { return prod1.Name.CompareTo(prod2.Name); });
+                            foreach (Product p in selectedMaker)
+                                Console.WriteLine($"Название - {p.Name}, Описание - {p.Description}, Доступность - {p.Availaible}, Цена - {p.Price}");
+                        }
+                        else if (str_1 == "Momi")
+                        {
+                            var selectedMaker = from p in prod
+                                                where p.Maker == "Momi"
+                                                select p;
+
+                            foreach (Product p in selectedMaker)
+                                Console.WriteLine($"Название - {p.Name}, Описание - {p.Description}, Доступность - {p.Availaible}, Цена - {p.Price}");
+                        }
+                        else if (str_1 == "LINDA")
+                        {
+                            var selectedMaker = from p in prod
+                                                where p.Maker == "LINDA"
+                                                select p;
+
+                            foreach (Product p in selectedMaker)
+                                Console.WriteLine($"Название - {p.Name}, Описание - {p.Description}, Доступность - {p.Availaible}, Цена - {p.Price}");
+                        }
+                        else if (str_1 == "Olobaby")
+                        {
+                            var selectedMaker = from p in prod
+                                                where p.Maker == "Olobaby"
+                                                select p;
+
+                            foreach (Product p in selectedMaker)
+                                Console.WriteLine($"Название - {p.Name}, Описание - {p.Description}, Доступность - {p.Availaible}, Цена - {p.Price}");
+                        }
+                        else if (str_1 == "Nestle")
+                        {
+                            var selectedMaker = from p in prod
+                                                where p.Maker == "Nestle"
+                                                select p;
+
+                            foreach (Product p in selectedMaker)
+                                Console.WriteLine($"Название - {p.Name}, Описание - {p.Description}, Доступность - {p.Availaible}, Цена - {p.Price}");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Ошибка");
+                        }
+                    }
+                        goto case "2";
+                case "6":
+                    Console.WriteLine("Вы хотите купить товар?");
+                    string str5 = Console.ReadLine();
+                    if (str5 == "Да")
+                    {
+                        goto case "7";
+                    }
+                    else if (str5 == "Нет")
+                    {
+                        goto case "2";
+                    }
+                    else
+                    {
+                        Console.WriteLine("Ошибка");
+                    }
+                    goto case "2";
+                case "7":
+                    Console.WriteLine("Введите название товара для покупки:");
+                    string str6 = Console.ReadLine();
+                    if (str6 == "Пеленка")
+                    {
+                        Product product = prod.Find(x => x.Name.Contains("Пеленка"));
+                        Console.WriteLine("Название:{0}, Цена:{1}, Доступность:{2}", product.Name, product.Price, product.Availaible);
+                        if (product.Availaible == false)
+                        {
+                            Console.WriteLine("Извините, но товар недоступен!");
+                            goto case "2";
+                        }
+                    }
+                    else if (str6 == "Памперсы")
+                    {
+                        Product product = prod.Find(x => x.Name.Contains("Памперсы"));
+                        Console.WriteLine("Название:{0}, Цена:{1}, Доступность:{2}", product.Name, product.Price, product.Availaible);
+                        if (product.Availaible == false)
+                        {
+                            Console.WriteLine("Извините, но товар недоступен!");
+                            goto case "2";
+                        }
+                    }
+                    else if (str6 == "Коляска")
+                    {
+                        Product product = prod.Find(x => x.Name.Contains("Коляска"));
+                        Console.WriteLine("Название:{0}, Цена:{1}, Доступность:{2}", product.Name, product.Price, product.Availaible);
+                        if (product.Availaible == false)
+                        {
+                            Console.WriteLine("Извините, но товар недоступен!");
+                            goto case "2";
+                        }
+                    }
+                    else if (str6 == "Бутылочка")
+                    {
+                        Product product = prod.Find(x => x.Name.Contains("Бутылочка"));
+                        Console.WriteLine("Название:{0}, Цена:{1}, Доступность:{2}", product.Name, product.Price, product.Availaible);
+                        if (product.Availaible == false)
+                        {
+                            Console.WriteLine("Извините, но товар недоступен!");
+                            goto case "2";
+                        }
+                    }
+                    else if (str6 == "Детская смесь")
+                    {
+                        Product product = prod.Find(x => x.Name.Contains("Детская смесь"));
+                        Console.WriteLine("Название:{0}, Цена:{1}, Доступность:{2}", product.Name, product.Price, product.Availaible);
+                        if (product.Availaible == false)
+                        {
+                            Console.WriteLine("Извините, но товар недоступен!");
+                            goto case "2";
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Ошибка");
+                    }
+                    goto case "8";
+                case "8":
+                    Console.WriteLine("Выберите вид оплаты:");
+                    Console.WriteLine("1 - Банковская карта");
+                    Console.WriteLine("2 - Я pay");
+                    Console.WriteLine("3 - Мир pay");
+                    Console.WriteLine("4 - Наличные");
+                    string str7 = Console.ReadLine();
+                    if (str7 == "1")
+                    {
+                        goto case "9";
+                    }
+                    else if (str7 == "2")
+                    {
+                        goto case "9";
+                    }
+                    else if (str7 == "3")
+                    {
+                        goto case "9";
+                    }
+                    else if (str7 == "4")
+                    {
+                        goto case "9";
+                    }
+                    goto case "2";
+
+                case "9":
+                    Console.WriteLine("Введите ваше ФИО и номер телефона для связи с вами");
+                    string str8 = Console.ReadLine();
+                    Console.WriteLine("Выберите вид доставки:");
+                    Console.WriteLine("1 - Самовывоз");
+                    Console.WriteLine("2 - Доставка");
+                    Console.WriteLine("3 - Срочная доставка");
+                    string stra = Console.ReadLine();
+                    if (stra == "1")
+                    {
+                        goto case "10";
+                    }
+                    else if (stra == "2")
+                    {
+                        goto case "10";
+                    }
+                    else if (stra == "3")
+                    {
+                        goto case "10";
+                    }
+                    else
+                    {
+                        Console.WriteLine("Ошибка");
+                    }
+                    goto case "2";
+                case "10":
+                    Console.WriteLine("Введите адрес(улица, дом квартира):");
+                    string strb = Console.ReadLine();
+                    if (strb != null)
+                    {
+                        Console.WriteLine("Заказ оформлен!");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Ошибка");
+                    }
+                    goto case "2";
+               
             }
         }
 
